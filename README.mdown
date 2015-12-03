@@ -203,7 +203,7 @@ Or modified by passing a transform function to `modify`:
 There are a few things to throw out there for the curious:
 
 ###Values are cached
-Reactive functions cache their values when they are executed. Consider a function X that depends on functions Y and Z (which have already run). If we run function X if will ask for the values of it dependencies X and Y, however _X and Y will not be run because they have not changed_. This is important for large systems of interdependent reactive functions. And, of course, if a dependency's value changes its cached value is updated and any downstream dependent values will execute and update their cached values too.
+Reactive functions cache their values when they are executed. Consider a function X that depends on functions Y and Z (which have already run). If we run function X if will ask for the values of it dependencies Y and Z, however Y and Z will not be run because they have not changed_. This is important for large systems of interdependent reactive functions. And, of course, if a dependency's value changes its cached value is updated and any downstream dependent values will execute and update their cached values too.
 
 ###Functions are not evaluated redundantly
 Reactive.js performs a topological sort of the dependency graph, meaning it assembles a list of functions to evaluate in-order. Reactive.js is smart enough to ensure that a function, even if it is a dependency for several others, will only be executed once.
